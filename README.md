@@ -5,3 +5,4 @@
 3. UI: Shadcn UI
 4. Database: PostgresQL at Supabase
 5. ORM: Prisma
+6. JS Runtime: Bun
