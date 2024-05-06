@@ -1,11 +1,7 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Bell, CircleUser, Menu, Package2 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import NavGroup from "./__components/nav-group";
-import { navItems } from "./__components/navigations";
-import { ToggleTheme } from "@/components/shared/toggle-theme";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,12 +10,27 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { validateRequest } from "@/lib/lucia";
+import { Button } from "@/components/ui/button";
+import NavGroup from "./__components/nav-group";
+import { signOut } from "@/actions/auth.actions";
+import { navItems } from "./__components/navigations";
+import { ToggleTheme } from "@/components/shared/toggle-theme";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // all of children under this file is protected page
+  // check if user is null, and then redirect to signin page
+  const { user } = await validateRequest();
+
+  if (!user) {
+    return redirect("/signin");
+  }
+
   return (
     <div className="h-screen grid place-items-center">
       <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -90,7 +101,13 @@ export default function DashboardLayout({
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem>Support</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <form action={signOut}>
+                    <Button type="submit" className="w-full">
+                      Sign out
+                    </Button>
+                  </form>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
