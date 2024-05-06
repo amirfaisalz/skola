@@ -16,24 +16,16 @@ export default function NavGroup({
   mobile = false,
 }: Readonly<NavGroupProps>) {
   const pathname = usePathname();
+  const NavComponent = mobile ? NavItemMobile : NavItem;
+
   return (
     <>
       {navItems.map((item) => (
-        <>
-          {mobile ? (
-            <NavItemMobile
-              key={item.id}
-              item={item}
-              state={item.href === pathname ? "active" : "inactive"}
-            />
-          ) : (
-            <NavItem
-              key={item.id}
-              item={item}
-              state={item.href === pathname ? "active" : "inactive"}
-            />
-          )}
-        </>
+        <NavComponent
+          key={item.id}
+          item={item}
+          state={item.href === pathname ? "active" : "inactive"}
+        />
       ))}
     </>
   );
