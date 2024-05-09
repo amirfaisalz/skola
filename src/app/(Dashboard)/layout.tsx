@@ -37,9 +37,12 @@ export default async function DashboardLayout({
         <div className="hidden border-r bg-muted/40 md:block">
           <div className="flex h-full max-h-screen flex-col gap-2">
             <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-              <Link href="/" className="flex items-center gap-2 font-semibold">
+              <Link
+                href="/dashboard"
+                className="flex items-center gap-2 font-semibold"
+              >
                 <Package2 className="h-6 w-6" />
-                <span className="">Acme Inc</span>
+                <span className="">Skola</span>
               </Link>
               <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
                 <Bell className="h-4 w-4" />
@@ -72,11 +75,11 @@ export default async function DashboardLayout({
                   {/* nav mobile */}
                   <nav className="grid gap-2 text-lg font-medium">
                     <Link
-                      href="#"
+                      href="/dashboard"
                       className="flex items-center gap-2 text-lg font-semibold mb-4"
                     >
                       <Package2 className="h-6 w-6" />
-                      <span>Acme Inc</span>
+                      <span>Skola</span>
                     </Link>
                     <NavGroup navItems={navItems} mobile />
                   </nav>
