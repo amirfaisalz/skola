@@ -31,6 +31,19 @@ Skola is more than just a learning platform; it's a comprehensive ecosystem desi
 
 # Todo:
 
-1. implement auth with lucia-auth
-2. connect database to postgresql. right now for development i choose supabase
-3. orm using drizzle
+1. connect database to postgresql. right now for development i choose supabase ✅
+2. orm using drizzle ✅
+3. implement auth with lucia-auth ✅
+4. add sistem role. role is ADMIN and STUDENT. default role when register is STUDENT.
+5. add permission by role to hide show feature by role.
+
+Feature Admin:
+
+1. Student management (activate, nonactivate)
+2. Role management
+3. Permission management
+
+Feature Student:
+
+1. Register Exam.
+2. Get all exam by user ID
