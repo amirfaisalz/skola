@@ -36,12 +36,14 @@ interface DataTableProps<TData, TValue> {
     searchPlaceholder?: string;
     searchColumn?: string;
   };
+  addData: React.ReactNode;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   filter = {},
+  addData,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -75,7 +77,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="mt-4 space-y-2">
-      <DataTableToolbar table={table} filter={filter} />
+      <DataTableToolbar table={table} filter={filter} addData={addData} />
       <DataTablePagination table={table} />
       <div className="rounded-md border">
         <Table>
