@@ -28,12 +28,22 @@ export const roleTable = pgTable("role", {
   name: text("name").notNull().unique(),
 });
 
-export type TRole = InferSelectModel<typeof roleTable>;
-
 export const permissionTable = pgTable("permission", {
   id: text("id").primaryKey(),
-  roleId: text("role_id")
-    .notNull()
-    .references(() => roleTable.id), // Reference to the roles table
   name: text("name").notNull(),
 });
+
+export const rolePermissionTable = pgTable("role_permission", {
+  roleId: text("role_id")
+    .notNull()
+    .references(() => roleTable.id),
+  permissionId: text("permission_id")
+    .notNull()
+    .references(() => permissionTable.id),
+});
+
+export type TRole = InferSelectModel<typeof roleTable>;
+export type TPermission = InferSelectModel<typeof permissionTable>;
+export type TRolePermission = InferSelectModel<typeof rolePermissionTable>;
+export type TUser = InferSelectModel<typeof userTable>;
+export type TSession = InferSelectModel<typeof sessionTable>;
