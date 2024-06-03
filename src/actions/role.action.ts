@@ -6,6 +6,7 @@ import { generateId } from "lucia";
 import {
   createRoleService,
   deleteRoleService,
+  editRoleService,
   getAllRoleService,
   getRoleByIdService,
 } from "@/lib/services/role.service";
@@ -64,6 +65,30 @@ export const createRole = async (values: z.infer<typeof RoleSchema>) => {
         newRole,
       },
       message: "Success create a role",
+    };
+  } catch (error: any) {
+    return {
+      success: false,
+      data: null,
+      message: error?.message,
+    };
+  }
+};
+
+export const editRole = async ({ id, name }: { id: string; name: string }) => {
+  try {
+    const newRole = await editRoleService({
+      id,
+      name,
+    });
+    revalidatePath("/roles");
+
+    return {
+      success: true,
+      data: {
+        newRole,
+      },
+      message: "Success edit role",
     };
   } catch (error: any) {
     return {

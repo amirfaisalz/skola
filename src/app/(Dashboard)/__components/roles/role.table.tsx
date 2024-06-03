@@ -7,7 +7,6 @@ import RoleForm from "./role.form";
 import {
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
 } from "@/components/ui/dropdown-menu";
 import { TRole } from "@/lib/database/schema";
 import { toast } from "@/components/ui/use-toast";
@@ -70,26 +69,29 @@ export default function RoleTable({
       cell: ({ row }) => (
         <DataTableRowActions row={row}>
           <DropdownMenuItem
+            className="cursor-pointer"
             onClick={() => {
-              console.log(row, "<< row");
               setIdToAction(row.original.id);
               setOpenEdit(true);
             }}
           >
             Edit
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => console.log("edit")}>
+          <DropdownMenuItem
+            className="cursor-pointer"
+            onClick={() => console.log("edit")}
+          >
             See Permissions
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
+            className="cursor-pointer"
             onClick={() => {
               setIdToAction(row.original.id);
               setOpenDelete(true);
             }}
           >
             Delete
-            <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DataTableRowActions>
       ),
@@ -115,7 +117,6 @@ export default function RoleTable({
 
   return (
     <>
-      <p>ID TO ACTION: {idToAction}</p>
       <DataTable
         data={data.data!}
         columns={column}
@@ -141,6 +142,7 @@ export default function RoleTable({
         setOpen={setOpenEdit}
         formType="Edit"
         resetId={() => setIdToAction(null)}
+        idToAction={idToAction!}
       />
       <DeleteDialog
         open={openDelete}

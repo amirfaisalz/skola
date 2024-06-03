@@ -22,6 +22,17 @@ export const createRoleService = async (values: { id: string; name: string }) =>
       id: roleTable.id,
     });
 
+export const editRoleService = async (values: { id: string; name: string }) =>
+  await db
+    .update(roleTable)
+    .set({
+      name: values.name,
+    })
+    .where(eq(roleTable.id, values.id))
+    .returning({
+      id: roleTable.id,
+    });
+
 export const deleteRoleService = async (id: string) =>
   await db
     .delete(roleTable)
