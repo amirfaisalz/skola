@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import { Table } from "@tanstack/react-table";
 
 import { Input } from "@/components/ui/input";
@@ -15,14 +15,17 @@ interface DataTableToolbarProps<TData> {
     searchPlaceholder?: string;
     searchColumn?: string;
   };
-
-  addData?: React.ReactNode;
+  addData?: {
+    isAddData?: boolean;
+    placeholder?: string;
+    seeAddData?: () => void;
+  };
 }
 
 export function DataTableToolbar<TData>({
   table,
   filter = {},
-  addData,
+  addData = {},
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
@@ -69,7 +72,16 @@ export function DataTableToolbar<TData>({
       </div>
       <DataTableViewOptions table={table} />
 
-      {addData}
+      {addData.isAddData && (
+        <Button
+          variant="outline"
+          className="h-8 px-2 lg:px-3 ml-2"
+          onClick={addData.seeAddData}
+        >
+          <Plus className="mr-2 h-4 w-4" />
+          {addData.placeholder ?? "Add Data"}
+        </Button>
+      )}
     </div>
   );
 }

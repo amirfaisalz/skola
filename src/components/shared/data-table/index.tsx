@@ -36,14 +36,18 @@ interface DataTableProps<TData, TValue> {
     searchPlaceholder?: string;
     searchColumn?: string;
   };
-  addData: React.ReactNode;
+  addData?: {
+    isAddData?: boolean;
+    placeholder?: string;
+    seeAddData?: () => void;
+  };
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   filter = {},
-  addData,
+  addData = {},
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =

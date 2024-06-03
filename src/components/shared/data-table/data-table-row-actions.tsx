@@ -7,28 +7,17 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
-  action?: {
-    canedit?: boolean;
-    handleEdit?: () => void;
-    candelete?: boolean;
-    handleDelete?: () => void;
-  };
+  children: React.ReactNode;
 }
 
 export function DataTableRowActions<TData>({
-  row,
-  action = {},
+  children,
 }: DataTableRowActionsProps<TData>) {
-  const { canedit, handleEdit, candelete, handleDelete } = action;
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -41,16 +30,7 @@ export function DataTableRowActions<TData>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        {canedit && handleEdit && (
-          <DropdownMenuItem onClick={handleEdit}>Edit</DropdownMenuItem>
-        )}
-        <DropdownMenuSeparator />
-        {candelete && handleDelete && (
-          <DropdownMenuItem onClick={handleDelete}>
-            Delete
-            <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        )}
+        {children}
       </DropdownMenuContent>
     </DropdownMenu>
   );
