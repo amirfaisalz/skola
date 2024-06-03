@@ -61,7 +61,7 @@ export default async function DashboardLayout({
       {/* <!-- Main Content --> */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* <!-- Header --> */}
-        <header className="flex bg-muted-40 h-14 border-b lg:px-6 lg:h-[66px] px-4 sticky top-0 z-10 items-center gap-4">
+        <header className="flex bg-muted/40 h-14 border-b lg:px-6 lg:h-[66px] px-4 sticky top-0 z-10 items-center gap-4">
           <div className="flex-1">
             <Sheet>
               <SheetTrigger asChild>
