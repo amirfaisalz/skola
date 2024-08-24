@@ -1,7 +1,9 @@
 import {
   Home,
   LineChart,
+  Lock,
   Package,
+  Package2,
   ShoppingCart,
   Users,
   UserX,
@@ -52,5 +54,17 @@ export const navItems: INavItem[] = [
     text: "Roles",
     icon: <UserX className="h-4 w-4" />,
     href: "/roles",
+  },
+  {
+    id: 7,
+    text: "Modules",
+    icon: <Package2 className="h-4 w-4" />,
+    href: "/modules",
+  },
+  {
+    id: 8,
+    text: "Permissions",
+    icon: <Lock className="h-4 w-4" />,
+    href: "/permissions",
   },
 ];
