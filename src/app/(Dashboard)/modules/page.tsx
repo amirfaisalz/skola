@@ -1,7 +1,7 @@
 import ModuleTable from "../__components/modules/module.table";
 import { getAllModules } from "@/actions/module.action";
 
-export default async function RolesPage() {
+export default async function ModulesPage() {
   const myModules = await getAllModules();
 
   return (
