@@ -34,6 +34,7 @@ export default function RoleForm({
   idToAction,
 }: {
   open: boolean;
+  // eslint-disable-next-line no-unused-vars
   setOpen: (val: boolean) => void;
   formType: "Edit" | "Add";
   resetId?: () => void;
