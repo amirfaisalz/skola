@@ -31,7 +31,6 @@ export default function SignInForm() {
   });
 
   async function onSubmit(values: z.infer<typeof SignInSchema>) {
-    console.log("masukkk");
     const res = await signIn(values);
     if (!res.success) {
       toast({

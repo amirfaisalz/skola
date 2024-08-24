@@ -51,6 +51,7 @@ export const validateRequest = cache(async () => {
 
 // IMPORTANT!
 declare module "lucia" {
+  // eslint-disable-next-line no-unused-vars
   interface Register {
     Lucia: typeof lucia;
   }
