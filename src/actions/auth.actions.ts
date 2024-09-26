@@ -74,7 +74,7 @@ export const signIn = async (values: z.infer<typeof SignInSchema>) => {
       return {
         success: false,
         data: null,
-        error: "User not found",
+        message: "User not found",
       };
     }
 
@@ -82,7 +82,7 @@ export const signIn = async (values: z.infer<typeof SignInSchema>) => {
       return {
         success: false,
         data: null,
-        error: "User not found",
+        message: "User not found",
       };
     }
 
@@ -95,7 +95,7 @@ export const signIn = async (values: z.infer<typeof SignInSchema>) => {
       return {
         success: false,
         data: null,
-        error: "Incorrect username or password",
+        message: "Incorrect username or password",
       };
     }
 
@@ -142,7 +142,7 @@ export const signOut = async () => {
       return {
         success: false,
         data: null,
-        error: "Unauthorized",
+        message: "Unauthorized",
       };
     }
 
@@ -161,7 +161,7 @@ export const signOut = async () => {
     return {
       success: false,
       data: null,
-      error: error?.message,
+      message: error?.message,
     };
   }
 };
