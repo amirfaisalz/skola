@@ -66,10 +66,10 @@ export const moduleTable = pgTable("module", {
 export const rolePermissionTable = pgTable("role_permission", {
   roleId: text("role_id")
     .notNull()
-    .references(() => roleTable.id),
+    .references(() => roleTable.id, { onDelete: 'cascade' }),
   permissionId: text("permission_id")
     .notNull()
-    .references(() => permissionTable.id),
+    .references(() => permissionTable.id, { onDelete: 'cascade' }),
 }, (table) => {
   return {
     roleIdIdx: index("role_permission_role_id_idx").on(table.roleId),
